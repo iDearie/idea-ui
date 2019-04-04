@@ -1,6 +1,6 @@
 {
   "name": "idea-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "typescript样板库",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
