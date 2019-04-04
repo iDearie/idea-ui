@@ -24,7 +24,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiaomingplus/npm-typescript-boilerplate.git"
+    "url": "https://github.com/iDearie/idea-ui.git"
   },
   "dependencies": {
     "@types/react-navigation": "^3.0.4",
