@@ -1,80 +1,129 @@
-# 项目名
+# React Native 组件库计划
 
-项目简介
+## 目的
 
-## 特性
+- 编写符合 UI 规范的 RN 组件库，支撑 RN 项目开发，提高 RN 项目开发效率，减少代码复用率
 
-特性简介
+- 使用 Typescript 语言开发，增强开发体验，增强使用组件时的智能提示，推动 Typescript 的使用
 
-- 特性 1
-- 特性 2
+## 当前问题
 
-## 如何修改本项目为你自己的项目
+- 无 npm 包，每个项目都需要复制一遍组件代码，不能保证组件库的统一
+- 组件调用无属性提示，在写代码的过程中没办法实时掌握组件调用是否合规
+- 无代码监测功能，代码风格差异较大
+- 部分组件扩展性不佳 eg: Checkbox，FloatLayer
+- 公用默认样式挂载在 global 全局属性上，容易被覆盖，调用方式不明确
+- 无单元测试
 
-```shell
-git clone https://github.com/xiaomingplus/npm-typescript-boilerplate.git your-project-name
-cd your-project-name
-# 安装依赖
-yarn i
-# 开始开发
-yarn start
-# 修改 package.json 里面的项目名和简介
-# 修改 README.md 文件内容
-# 修改 远程仓库的地址
-git remote set-url origin <your-git-url>
-```
+## 改进方案
 
-## 如何安装
+- 建立 npm 代码包， 保证每个项目的组件库体验一致
+- 使用 Typescript，提供完整的 interface 来保证在组件调用时可以给出很好的提示
+- 增加 ESLint 以及 TSLint，保证代码风格统一
+- 梳理组件逻辑，完善使用场景，在保证代码稳定的情况下提高扩展性
+- 使用 React 的内置功能提供全局的主题样式，调用方式更明确
+- 使用 Jest + Enzyme 进行单元测试，提高代码的可测试性，降低 bug 数
 
-(修改为你自己的：
+## 难点
 
-```shell
-npm i npm-typescript-boilerplate
-```
+- 之前未进行过系统的 RN 的单元测试
+- 部分组件需要原生支持 eg: Icon
 
-## 如何使用
+## 组件列表
 
-(修改为你自己的
+- Theme - 已完成
+- Collapse - 已完成
+- Button - 已完成
+- Checkbox - 已完成
+- List - 已完成
+- Form - 已完成
+- Icon - 已完成
+- Pagination - 已完成
+- Slider - 已完成
+- Switch - 已完成
+- Tab - 已完成
+- Popover - 80%
+- DatePickerView - 0%
+- FloatLayer - 0%
 
-```typescript
-import { Greeter } from '@tencent/typescript-boilerplate'
+## 测试用例
 
-const str = Greeter('Bob')
-console.log('str', str)
-```
+- Button - 100%
+- List - 100%
+- Pagination 100%
+- Theme - 0%
+- Collapse - 0%
+- Checkbox - 0%
+- Form - 0%
+- Icon - 0%
+- Slider - 0%
+- Switch - 0%
+- Tab - 0%
+- Popover - 0%
+- DatePickerView - 0%
+- FloatLayer - 0%
 
-## API
+## 组件详情
 
-(修改为你自己的
+- **Theme 组件**
 
-这里列出所有的 API，如果有很多的话，建议这里只写索引，具体的参数信息可以导航到 docs 目录下的文件
+  入口组件，对被包裹在其中的组件提供默认主题样式。
 
-## 如何开发
+  `export { WithTheme, useTheme }`
 
-(修改为你自己的
+  eg:
 
-```shell
-yarn
-yarn start
-```
+  ```typescript
+   <WithTheme theme={(theme) => StyleSheet<any>}>
+     {(style) => React.ReactNode}
+   </WithTheme>
+  ```
 
-本项目采用[prettier](https://prettier.io/)来统一代码风格，并且会在`pre-commit`前自动 format 你本次提交的代码，推荐你在你的编辑器里安装 prettier 插件，并且开启保存文件就自动 format 选项，这样可以在开发的时候，就能自动 format
+- **Collapse 折叠面板**
 
-本项目采用[git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) 工作流，请按照 git flow 工作流来提交合并代码
+  > 可以折叠/展开的内容区域
 
-推荐使用`yarn commit`来代替`git commit`作为格式化 commit 信息的工具
+- **Button 按钮**
 
-```shell
-yarn commit
-```
+  > 点击后会触发操作
 
-### 如何打包发布
+- **Checkbox 单选复选组件**
 
-(修改为你自己的
+  > 单选多选组件
 
-```shell
-cd npm-typescript-boilerplate
-# 自动打tag和生成changelog,并修改package.json
-npm run release
-npm publish
-```
+- **List 组件**
+
+  > 单个连续模块垂直排列，显示当前的内容、状态和可进行的操作。eg：联系人列表。
+  > TODO： 将箭头的图片换成 Icon 组件
+
+- **Form 表单**
+
+  > 仿照 Web 端提供的依赖 List 组件的表单类组件
+
+- **Icon 组件**
+
+  > 采用第三方库提供的 Icon 组件，使用 svg 作为图标，提供符合标准的默认样式
+
+- **Pagination 分页**
+
+  > 分隔长列表，每次只加载一个页面
+
+- **Slider 滑动选择器**
+
+  > 允许用户在一个区间中选择特定值
+
+- **Switch 开关**
+
+  > 切换选择组件
+
+- **Tab 标签页**
+
+  > 用于让用户在不同的视图中进行切换
+
+- **Popover 气泡**
+
+  > 在固定位置显示提示气泡
+
+- **DatePickerView 时间选择器**
+
+  > 包含年、月、日、小时、分钟的日期选择器
