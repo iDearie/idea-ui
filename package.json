@@ -1,7 +1,7 @@
 {
   "name": "idea-ui",
   "version": "0.0.2",
-  "description": "typescript样板库",
+  "description": "idea-ui RN组件库",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
