@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "outDir": "./lib",
     "paths": { "*": ["types/*"] },
-    "lib": ["dom", "esnext"],
+    "lib": ["dom", "esnext", "es6", "es2017"],
     "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "preserve",
@@ -13,8 +13,9 @@
     "target": "es6",
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "types": ["react", "react-native", "jest"]
+    "types": ["react", "react-native", "jest"],
+    "esModuleInterop": true
   },
-  "exclude": ["node_modules", "lib", "es"],
+  "exclude": ["node_modules", "lib", "es", "./src/__tests__"],
   "compileOnSave": false
 }
