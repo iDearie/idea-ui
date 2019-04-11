@@ -11,7 +11,7 @@ import {
 import { WithTheme } from '../Theme'
 import buttonStyle from './styles'
 
-interface IButtonProps {
+interface ButtonProps {
   type?: 'default' | 'ghost' // 按钮样式 默认: default 幽灵: ghost
   disabled?: boolean // 按钮禁用状态 默认false
   disabledType?: 'neutral' | 'status' // 按钮禁用样式 默认: neutral
@@ -24,8 +24,8 @@ interface IButtonProps {
 }
 const initialState = { pressIn: false }
 type State = Readonly<typeof initialState>
-export class Button extends React.Component<IButtonProps, State> {
-  static defaultProps: IButtonProps = {
+export class Button extends React.Component<ButtonProps, State> {
+  static defaultProps: ButtonProps = {
     type: 'default',
     disabled: false,
     disabledType: 'neutral',
